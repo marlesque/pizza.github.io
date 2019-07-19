@@ -1,0 +1,25 @@
+
+<html>
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="script.js"></script>
+<style> circle {fill: lightblue; stroke: black;} </style>
+
+<body onboard="init();">
+<svg width=300 height=300>does this work
+</svg>
+<script>
+async function init() {
+console.log('please work por favor');
+var data= d3.csv('Users/no-face/Downloads/pizza/pizzadata.csv');
+var xs = d3.scaleLinear().domain([18, 65]).range([100, 300]);
+var ys = d3.scaleLinear().domain([-158, -67]).range([100, 300]);
+d3.select("svg").append("g").attr("transform", 'translate(150,150)')
+.selectAll("circle").data(data).enter().append("circle").attr("r", 1)
+.attr("cx", function(d,i) {return xs(d.latitude);} )
+.attr("cy", function(d,i) {return ys(d.longitude); });
+}
+</script>
+
+
+</body>
+</html>
